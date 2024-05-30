@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/display.css">
+    <title>Documento</title>
+</head>
+<body>
+    <header>
+        <div class="barra-menu">
+            <h1>Sistema de Registro</h1>
+            <nav class="menu">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="facultades.html">Agregar Facultad</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <h3>Registra un alumno nuevo</h3>
+        <div clss="Formulario">
+            <div class="GrupoForm">
+                <label>Nombre</label>
+                <input type="text" id="txt_Nombre" class="FormElement">
+            </div>
+            <div class="GrupoForm">
+                <label>Edad</label>
+                <input type="text" maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" id="txt_Edad" class="FormElement">
+            </div>
+            <div class="GrupoForm">
+                <label>Genero</label>
+                <select name="genero" id="ddl_Genero" class="FormElement">
+                    <option value="">---</option>
+                    <option value="0">Mujer</option>
+                    <option value="1">Hombre</option>
+                    <option value="2">Otro</option>
+                </select>
+            </div>
+            <div class="GrupoForm">
+                <label>Facultad</label>
+                <select name="facultades" id="ddl_Facultades" class="FormElement">
+                    <option value="">---</option>
+                    <option value="0">Facultad de Ciencias Administrativas</option>
+                    <option value="1">Facultad de Ingeniería</option>
+                    <option value="2">Facultad de Deportes</option>
+                </select>
+            </div>
+            <div class="GrupoForm">
+                <label>Correo</label>
+                <input type="email" id="txt_Correo" class="FormElement"> 
+            </div>
+            <div class="GrupoForm">
+                <label>Password</label>
+                <input type="password" id="txt_Psw" class="FormElement">
+            </div>
+            <div class="GrupoForm">
+                <label>Español</label>
+                <input type="text" maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" id="txt_Esp" class="FormElement">
+            </div>
+            <div class="GrupoForm">
+                <label>Matemáticas</label>
+                <input type="text" maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" id="txt_Mat" class="FormElement">
+            </div>
+            <div class="GrupoForm">
+                <label>Geografía</label>
+                <input type="text" maxlength="2" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" id="txt_Geo" class="FormElement">
+            </div>
+            <div class="Botones">
+                <button onclick="registrar()">Registrar</button>
+            </div>
+            
+            <h3>Alumnos registrados</h3>
+            <div>
+                <table class='table-student'>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Edad</th>
+                            <th>Genero</th>
+                            <th>Facultad</th>
+                            <th>Correo</th>
+                            <th>Contraseña</th>
+                            <th>Español</th>
+                            <th>Matemáticas</th>
+                            <th>Geografía</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTable">
+                        
+                    </tbody>
+                </table>
+            </div>
+            <dialog class="ModalEditar" id="ModalEditar">
+                <h3>Actualizar registro</h3>
+                <div clss="Formulario">
+                    <div class="GrupoForm">
+                        <label>ID: </label>
+                        <input type="text" id="txt_IdU" disabled class="FormElement">
+                    </div>
+                    <div class="GrupoForm">
+                        <label>Nombre</label>
+                        <input type="text" id="txt_NombreU" class="FormElement">
+                    </div>
+                    <div class="GrupoForm">
+                        <label>Edad</label>
+                        <input type="text" maxlength="2"
+                            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" id="txt_EdadU" class="FormElement">
+                    </div>
+                    <div class="GrupoForm">
+                        <label>Genero</label>
+                        <select name="genero" id="ddl_GeneroU" class="FormElement">
+                            <option value="">---</option>
+                            <option value="0">Mujer</option>
+                            <option value="1">Hombre</option>
+                            <option value="2">Otro</option>
+                        </select>
+                    </div>
+                    <div class="GrupoForm">
+                        <label>Facultad</label>
+                        <select name="facultades" id="ddl_FacultadesU" class="FormElement">
+                            <option value="">---</option>
+                            <option value="0">Facultad de Ciencias Administrativas</option>
+                            <option value="1">Facultad de Ingeniería</option>
+                            <option value="2">Facultad de Deportes</option>
+                        </select>
+                    </div>
+                    <div class="GrupoForm">
+                        <label>Correo</label>
+                        <input type="email" id="txt_CorreoU" class="FormElement">
+                    </div>
+                    <div class="GrupoForm">
+                        <label>Password</label>
+                        <input type="password" id="txt_PswU" class="FormElement">
+                    </div>
+                    <div class="GrupoForm">
+                        <label>Español</label>
+                        <input type="text" maxlength="2"
+                            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" id="txt_EspU" class="FormElement">
+                    </div>
+                    <div class="GrupoForm">
+                        <label>Matemáticas</label>
+                        <input type="text" maxlength="2"
+                            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" id="txt_MatU" class="FormElement">
+                    </div>
+                    <div class="GrupoForm">
+                        <label>Geografía</label>
+                        <input type="text" maxlength="2"
+                            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" id="txt_GeoU" class="FormElement">
+                    </div>
+                    <div class="BotonesEditar">
+                        <button class="BotonEliminar" onclick="window.ModalEditar.close()">Cancelar</button>
+                        <button class="BotonEditar" onclick="ActualizaRegistro()">Actualizar</button>
+                    </div>
+                </div>
+            </dialog>
+            <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+            <script src="./scripts/register.js"></script>
+            <script src="./scripts/update.js"></script>
+            <script src="./scripts/delete.js"></script>
+            <script src="./scripts/display.js"></script>
+        </div>
+    </main>
+    <footer>
+        MGTIC - Sistema de registro © 2024
+    </footer>
+</body>
+</html>

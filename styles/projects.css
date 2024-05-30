@@ -1,0 +1,11 @@
+.project-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 50px;
+}
+.project-img {
+    margin-bottom: 15px;
+}
+.project-text {
+	margin-bottom: 15px;
+}
